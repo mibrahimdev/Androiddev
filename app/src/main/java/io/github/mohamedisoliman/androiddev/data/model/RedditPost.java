@@ -1,5 +1,10 @@
 package io.github.mohamedisoliman.androiddev.data.model;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
 /**
  * Created by Mohamed Ibrahim on 8/1/18.
  */
@@ -55,5 +60,12 @@ public class RedditPost {
 
   public Double getCreated() {
     return created;
+  }
+
+  public String getCreatedDate() {
+    Date date = new Date(created.longValue());
+    String format = "dd/MM, HH:mm";
+    DateFormat dateFormat = new SimpleDateFormat(format, Locale.ENGLISH);
+    return dateFormat.format(date);
   }
 }

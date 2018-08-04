@@ -32,10 +32,14 @@ public class HomeViewModel extends AndroidViewModel {
   }
 
   public void loadPosts() {
-    compositeDisposable.add(repository.getAndroidDev()
-        .subscribeOn(Schedulers.io())
-        .observeOn(AndroidSchedulers.mainThread())
-        .subscribe(posts::onNext));
+    if (posts.getValue().isEmpty()) {
+      compositeDisposable.add(repository.getAndroidDev()
+          .subscribeOn(Schedulers.io())
+          .observeOn(AndroidSchedulers.mainThread())
+          .subscribe(posts::onNext));
+    } else {
+      posts.onNext(posts.getValue());
+    }
   }
 
   public Observable<List<RedditPost>> getPosts() {

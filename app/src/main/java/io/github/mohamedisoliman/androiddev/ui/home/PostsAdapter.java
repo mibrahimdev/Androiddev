@@ -41,11 +41,15 @@ public class PostsAdapter extends AppBaseAdapter<PostsAdapter.PostViewHolder, Re
 
     void bindData(RedditPost post) {
       itemRedditPostBinding.title.setText(post.getTitle());
-      itemRedditPostBinding.actionShare.setOnClickListener(v -> { });
+      itemRedditPostBinding.actionShare.setOnClickListener(v -> {
+      });
       itemRedditPostBinding.author.setText(post.getAuthor());
-      itemRedditPostBinding.created.setText(String.valueOf(post.getCreated()));
+      itemRedditPostBinding.created.setText(post.getCreatedDate());
       itemRedditPostBinding.upvotes.setText(String.valueOf(post.getUps()));
-      Picasso.get().load(post.getThumbnail()).into(itemRedditPostBinding.thumbnail);
+      Picasso.get()
+          .load(post.getThumbnail())
+          .error(R.drawable.ic_reddit_logo)
+          .into(itemRedditPostBinding.thumbnail);
     }
   }
 }

@@ -13,7 +13,7 @@ import java.util.List;
 public class RedditRemoteStore {
 
   private static final String ANDROIDDEV_SUBREDDIT = "androiddev";
-  private static final int LIMIT = 10;
+  private static final int LIMIT = 25;
 
   private RedditApi redditApi;
 

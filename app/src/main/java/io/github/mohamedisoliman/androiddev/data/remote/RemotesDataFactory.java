@@ -1,5 +1,7 @@
 package io.github.mohamedisoliman.androiddev.data.remote;
 
+import android.support.annotation.NonNull;
+import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
@@ -21,9 +23,15 @@ public class RemotesDataFactory {
     Retrofit retrofit = new Retrofit.Builder().baseUrl(BASE_URL)
         .client(getOkHttpClient())
         .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-        .addConverterFactory(GsonConverterFactory.create(new GsonBuilder().create()))
+        .addConverterFactory(getGsonFactory())
         .build();
     return retrofit.create(RedditApi.class);
+  }
+
+  @NonNull
+  private static GsonConverterFactory getGsonFactory() {
+    Gson gson = new GsonBuilder().create();
+    return GsonConverterFactory.create(gson);
   }
 
   private static OkHttpClient getOkHttpClient() {
