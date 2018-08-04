@@ -7,12 +7,8 @@ import android.app.Application;
  */
 public class AndroiddevApp extends Application {
 
-
-    @Override
-    public void onCreate() {
-        super.onCreate();
-
-    }
-
-
+  @Override
+  public void onCreate() {
+    super.onCreate();
+  }
 }

@@ -1,39 +1,37 @@
-
 package io.github.mohamedisoliman.androiddev.data.model;
 
 import com.google.gson.annotations.Expose;
 
 public class Resolution {
 
-    @Expose
-    private Long height;
-    @Expose
-    private String url;
-    @Expose
-    private Long width;
+  @Expose
+  private Long height;
+  @Expose
+  private String url;
+  @Expose
+  private Long width;
 
-    public Long getHeight() {
-        return height;
-    }
+  public Long getHeight() {
+    return height;
+  }
 
-    public void setHeight(Long height) {
-        this.height = height;
-    }
+  public void setHeight(Long height) {
+    this.height = height;
+  }
 
-    public String getUrl() {
-        return url;
-    }
+  public String getUrl() {
+    return url;
+  }
 
-    public void setUrl(String url) {
-        this.url = url;
-    }
+  public void setUrl(String url) {
+    this.url = url;
+  }
 
-    public Long getWidth() {
-        return width;
-    }
+  public Long getWidth() {
+    return width;
+  }
 
-    public void setWidth(Long width) {
-        this.width = width;
-    }
-
+  public void setWidth(Long width) {
+    this.width = width;
+  }
 }

@@ -1,7 +1,6 @@
 package io.github.mohamedisoliman.androiddev.data.remote;
 
 import com.google.gson.GsonBuilder;
-
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
@@ -13,26 +12,25 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 public class RemotesDataFactory {
 
-    private RemotesDataFactory() {
-    }
+  private RemotesDataFactory() {
+  }
 
-    private static final String BASE_URL = "https://www.reddit.com";
+  private static final String BASE_URL = "https://www.reddit.com";
 
-    public static RedditApi newRedditApi() {
-        Retrofit retrofit = new Retrofit.Builder().baseUrl(BASE_URL)
-                .client(getOkHttpClient())
-                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                .addConverterFactory(GsonConverterFactory.create(new GsonBuilder().create()))
-                .build();
-        return retrofit.create(RedditApi.class);
-    }
+  public static RedditApi newRedditApi() {
+    Retrofit retrofit = new Retrofit.Builder().baseUrl(BASE_URL)
+        .client(getOkHttpClient())
+        .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+        .addConverterFactory(GsonConverterFactory.create(new GsonBuilder().create()))
+        .build();
+    return retrofit.create(RedditApi.class);
+  }
 
-    private static OkHttpClient getOkHttpClient() {
-        HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor();
-        loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
-        final OkHttpClient.Builder clientBuilder =
-                new OkHttpClient.Builder()
-                        .addInterceptor(loggingInterceptor);
-        return clientBuilder.build();
-    }
+  private static OkHttpClient getOkHttpClient() {
+    HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor();
+    loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+    final OkHttpClient.Builder clientBuilder =
+        new OkHttpClient.Builder().addInterceptor(loggingInterceptor);
+    return clientBuilder.build();
+  }
 }
