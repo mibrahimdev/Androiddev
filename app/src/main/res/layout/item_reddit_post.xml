@@ -59,7 +59,7 @@
               android:layout_marginStart="8dp"
               android:maxLength="20"
               android:maxLines="1"
-              android:textColor="@color/colorPrimaryDark"
+              android:textColor="@color/colorAccent"
               tools:text="@tools:sample/lorem/random"
               />
         </LinearLayout>

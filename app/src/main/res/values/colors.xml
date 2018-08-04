@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <color name="colorPrimary">#FF5722</color>
-  <color name="colorPrimaryDark">#E64A19</color>
-  <color name="colorAccent">#FF4081</color>
+  <color name="colorPrimary">@color/blue_grey_800</color>
+  <color name="colorPrimaryDark">@color/blue_grey_900</color>
+  <color name="colorAccent">@color/deep_orange_a200</color>
 
   <color name="mid_grey">#40808080</color>
   <color name="white_50">#fafafa</color>
@@ -12,5 +12,23 @@
   <color name="colorActionBar">#e57373</color>
 
   <color name="material_light_white">#FFFFFF</color>
+
+
+  <color name="blue_grey_500">#607D8B</color>
+  <color name="blue_grey_600">#546E7A</color>
+  <color name="blue_grey_700">#455A64</color>
+  <color name="blue_grey_800">#37474F</color>
+  <color name="blue_grey_900">#263238</color>
+
+  <color name="deep_orange_200">#FFAB91</color>
+  <color name="deep_orange_300">#FF8A65</color>
+  <color name="deep_orange_400">#ff7043</color>
+  <color name="deep_orange_500">#FF5722</color>
+  <color name="deep_orange_600">#F4511E</color>
+  <color name="deep_orange_700">#E64A19</color>
+  <color name="deep_orange_800">#D84315</color>
+  <color name="deep_orange_900">#BF360C</color>
+  <color name="deep_orange_a200">#ff6e40</color>
+
 
 </resources>
