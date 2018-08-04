@@ -1,4 +1,4 @@
-package io.github.mohamedisoliman.androiddev.ui;
+package io.github.mohamedisoliman.androiddev.ui.home;
 
 import android.app.Application;
 import android.arch.lifecycle.AndroidViewModel;
@@ -6,6 +6,7 @@ import android.support.annotation.NonNull;
 import io.github.mohamedisoliman.androiddev.data.Repository;
 import io.github.mohamedisoliman.androiddev.data.model.RedditPost;
 import io.github.mohamedisoliman.androiddev.di.AppDependencies;
+import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.schedulers.Schedulers;
@@ -35,5 +36,9 @@ public class HomeViewModel extends AndroidViewModel {
         .subscribeOn(Schedulers.io())
         .observeOn(AndroidSchedulers.mainThread())
         .subscribe(posts::onNext));
+  }
+
+  public Observable<List<RedditPost>> getPosts() {
+    return posts;
   }
 }

@@ -7,13 +7,15 @@
   <android.support.constraint.ConstraintLayout
       android:layout_width="match_parent"
       android:layout_height="match_parent"
-      tools:context=".ui.HomeActivity"
+      android:background="@color/white_50"
+      tools:context=".ui.home.HomeActivity"
       >
 
     <android.support.v7.widget.RecyclerView
+        android:id="@+id/posts_recyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:listitem="@android:layout/simple_list_item_checked"
+        tools:listitem="@layout/item_reddit_post"
         >
 
     </android.support.v7.widget.RecyclerView>
