@@ -64,7 +64,7 @@ public class RedditPost {
 
   public String getCreatedDate() {
     Date date = new Date(created.longValue());
-    String format = "dd/MM, HH:mm";
+    String format = "dd/MM, hh:mm a";
     DateFormat dateFormat = new SimpleDateFormat(format, Locale.ENGLISH);
     return dateFormat.format(date);
   }
