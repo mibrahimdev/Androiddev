@@ -7,4 +7,4 @@ Keep up with Android development latest trends
 - RxJava 2
 - Arch components (Room - ViewModel - LifeCycleAware - WorkManager)
 - Picasso
-- Retrofit/Okhttpp
+- Retrofit 2 / Okhttp 3
