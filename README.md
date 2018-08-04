@@ -5,6 +5,6 @@ Keep up with Android development latest trends
 ## Technologies
 - Kotlin (Coming soon)
 - RxJava 2
-- Arch components (Room - ViewModel - LifeCycleAware - workManager)
-- Picaso
+- Arch components (Room - ViewModel - LifeCycleAware - WorkManager)
+- Picasso
 - Retrofit/Okhttpp
