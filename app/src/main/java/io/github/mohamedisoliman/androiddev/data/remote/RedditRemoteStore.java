@@ -21,8 +21,8 @@ public class RedditRemoteStore {
     this.redditApi = redditApi;
   }
 
-  public Observable<List<RedditPost>> getSubreddit() {
-    return redditApi.getSubreddit(ANDROIDDEV_SUBREDDIT, "", LIMIT)
+  public Observable<List<RedditPost>> getSubreddit(String filter) {
+    return redditApi.getSubreddit(ANDROIDDEV_SUBREDDIT, filter, "", LIMIT)
         .map(RedditResponse::getData)
         .map(Data::getChildren)
         .flatMap(Observable::fromIterable)

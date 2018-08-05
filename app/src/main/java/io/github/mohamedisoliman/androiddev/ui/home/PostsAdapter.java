@@ -11,7 +11,11 @@ import com.squareup.picasso.Picasso;
 import io.github.mohamedisoliman.androiddev.R;
 import io.github.mohamedisoliman.androiddev.data.model.RedditPost;
 import io.github.mohamedisoliman.androiddev.databinding.ItemRedditPostBinding;
+import io.github.mohamedisoliman.androiddev.databinding.PlaceHolderEmptyListBinding;
 import io.github.mohamedisoliman.androiddev.ui.base.AppBaseAdapter;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * Created by Mohamed Ibrahim on 8/4/18.

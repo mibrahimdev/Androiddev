@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+  <item
+      android:id="@+id/action_settings"
+      android:icon="@drawable/ic_filter_list_white_24dp"
+      android:orderInCategory="100"
+      android:title="@string/filter"
+      app:showAsAction="always">
+
+    <menu>
+      <item
+          android:id="@+id/hot"
+          android:icon="@drawable/ic_whatshot_black_24dp"
+          android:title="@string/hot"/>
+      <item
+          android:id="@+id/new_posts"
+          android:icon="@drawable/ic_new_releases_black_24dp"
+          android:title="@string/new_posts"/>
+      <item
+          android:id="@+id/controversial"
+          android:icon="@drawable/ic_chat_bubble_outline_black_24dp"
+          android:title="@string/controversial"/>
+      <item
+          android:id="@+id/top"
+          android:icon="@drawable/ic_thumb_up_black_24dp"
+          android:title="@string/top"/>
+
+      <item
+          android:id="@+id/rising"
+          android:icon="@drawable/ic_trending_up_black_24dp"
+          android:title="@string/rising"/>
+
+    </menu>
+  </item>
+</menu>

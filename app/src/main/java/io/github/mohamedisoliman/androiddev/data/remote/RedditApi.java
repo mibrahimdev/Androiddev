@@ -11,7 +11,7 @@ import retrofit2.http.Query;
  */
 public interface RedditApi {
 
-  @GET("/r/{subreddit}.json")
+  @GET("/r/{subreddit}/{filter}.json")
   Observable<RedditResponse> getSubreddit(@Path("subreddit") String subreddit,
-      @Query("after") String after, @Query("limit") int limit);
+      @Path("filter") String filter, @Query("after") String after, @Query("limit") int limit);
 }

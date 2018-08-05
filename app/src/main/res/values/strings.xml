@@ -1,3 +1,9 @@
 <resources>
-    <string name="app_name">Androiddev</string>
+  <string name="app_name">Androiddev</string>
+  <string name="top">Top</string>
+  <string name="filter">Filter</string>
+  <string name="hot">Hot</string>
+  <string name="controversial">Controversial</string>
+  <string name="rising">Rising</string>
+  <string name="new_posts">New</string>
 </resources>

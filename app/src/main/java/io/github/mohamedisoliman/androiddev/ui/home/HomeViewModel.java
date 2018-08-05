@@ -11,6 +11,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.schedulers.Schedulers;
 import io.reactivex.subjects.BehaviorSubject;
+import io.reactivex.subjects.PublishSubject;
 import java.util.List;
 
 import static io.reactivex.subjects.BehaviorSubject.createDefault;
@@ -23,6 +24,8 @@ public class HomeViewModel extends AndroidViewModel {
 
   private Repository repository;
   private BehaviorSubject<List<RedditPost>> posts = createDefault(emptyList());
+  private PublishSubject<Boolean> loadingIndicator = PublishSubject.create();
+  private PublishSubject<String> errorIndicator = PublishSubject.create();
   private CompositeDisposable compositeDisposable = new CompositeDisposable();
 
   public HomeViewModel(@NonNull Application application) {
@@ -33,16 +36,49 @@ public class HomeViewModel extends AndroidViewModel {
 
   public void loadPosts() {
     if (posts.getValue().isEmpty()) {
-      compositeDisposable.add(repository.getAndroidDev()
-          .subscribeOn(Schedulers.io())
-          .observeOn(AndroidSchedulers.mainThread())
-          .subscribe(posts::onNext));
+      refreshLoading();
     } else {
       posts.onNext(posts.getValue());
     }
   }
 
+  private void refreshLoading() {
+    compositeDisposable.add(Observable.just("start")
+        .doOnNext(ignored -> loadingIndicator.onNext(true))
+        .flatMap(ignored -> repository.getAndroidDev())
+        .subscribeOn(Schedulers.io())
+        .observeOn(AndroidSchedulers.mainThread())
+        .doOnNext(redditPosts -> loadingIndicator.onNext(false))
+        .doOnError(throwable -> errorIndicator.onNext(throwable.getMessage()))
+        .doOnNext(redditPosts -> {
+          if (redditPosts.isEmpty()) errorIndicator.onNext("No available data");
+        })
+        .subscribe(posts::onNext));
+  }
+
+  public void loadWithFilter(String filter) {
+    repository.saveFilter(filter)
+        .subscribe(this::refreshLoading,
+            throwable -> errorIndicator.onNext(throwable.getMessage()));
+  }
+
   public Observable<List<RedditPost>> getPosts() {
     return posts;
+  }
+
+  public Observable<Boolean> getLoadingIndicator() {
+    return loadingIndicator.observeOn(AndroidSchedulers.mainThread());
+  }
+
+  public Observable<String> getErrorIndicator() {
+    return errorIndicator.observeOn(AndroidSchedulers.mainThread());
+  }
+
+  @Override
+  protected void onCleared() {
+    errorIndicator.onComplete();
+    loadingIndicator.onComplete();
+    compositeDisposable.clear();
+    super.onCleared();
   }
 }

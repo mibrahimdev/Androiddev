@@ -1,7 +1,9 @@
 package io.github.mohamedisoliman.androiddev.data;
 
+import io.github.mohamedisoliman.androiddev.data.local.RedditLocalStore;
 import io.github.mohamedisoliman.androiddev.data.model.RedditPost;
 import io.github.mohamedisoliman.androiddev.data.remote.RedditRemoteStore;
+import io.reactivex.Completable;
 import io.reactivex.Observable;
 import java.util.List;
 
@@ -11,12 +13,19 @@ import java.util.List;
 public class Repository {
 
   private RedditRemoteStore remoteStore;
+  private RedditLocalStore localStore;
 
-  public Repository(RedditRemoteStore remoteStore) {
+  public Repository(RedditRemoteStore remoteStore, RedditLocalStore localStore) {
     this.remoteStore = remoteStore;
+    this.localStore = localStore;
   }
 
   public Observable<List<RedditPost>> getAndroidDev() {
-    return remoteStore.getSubreddit();
+    String filter = localStore.getFilter();
+    return remoteStore.getSubreddit(filter);
+  }
+
+  public Completable saveFilter(String filter) {
+    return Completable.fromAction(() -> localStore.saveFilter(filter));
   }
 }
