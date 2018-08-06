@@ -11,11 +11,8 @@ import com.squareup.picasso.Picasso;
 import io.github.mohamedisoliman.androiddev.R;
 import io.github.mohamedisoliman.androiddev.data.model.RedditPost;
 import io.github.mohamedisoliman.androiddev.databinding.ItemRedditPostBinding;
-import io.github.mohamedisoliman.androiddev.databinding.PlaceHolderEmptyListBinding;
 import io.github.mohamedisoliman.androiddev.ui.base.AppBaseAdapter;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import io.github.mohamedisoliman.androiddev.ui.post.PostActivity;
 
 /**
  * Created by Mohamed Ibrahim on 8/4/18.
@@ -48,6 +45,7 @@ public class PostsAdapter extends AppBaseAdapter<PostsAdapter.PostViewHolder, Re
     }
 
     void bindData(RedditPost post) {
+      itemRedditPostBinding.postItem.setOnClickListener(v -> PostActivity.start(context, post));
       itemRedditPostBinding.title.setText(post.getTitle());
       itemRedditPostBinding.actionShare.setOnClickListener(v -> share(post));
       itemRedditPostBinding.author.setText(post.getAuthor());

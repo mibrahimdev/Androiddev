@@ -8,6 +8,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import io.github.mohamedisoliman.androiddev.R;
 import io.github.mohamedisoliman.androiddev.data.model.RedditFilter;
 import io.github.mohamedisoliman.androiddev.databinding.ActivityHomeBinding;
@@ -27,7 +28,9 @@ public class HomeActivity extends AppCompatActivity {
     binding = DataBindingUtil.setContentView(this, R.layout.activity_home);
     homeViewModel = ViewModelProviders.of(this).get(HomeViewModel.class);
     bindViews();
-    setSupportActionBar(binding.toolbar);
+    binding.appbar.title1.setVisibility(View.VISIBLE);
+    binding.appbar.title2.setVisibility(View.VISIBLE);
+    setSupportActionBar(binding.appbar.toolbar);
     getSupportActionBar().setDisplayShowTitleEnabled(false);
 
     homeViewModel.loadPosts();
