@@ -9,9 +9,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
-import com.crashlytics.android.Crashlytics;
 import io.github.mohamedisoliman.androiddev.R;
 import io.github.mohamedisoliman.androiddev.data.model.RedditFilter;
 import io.github.mohamedisoliman.androiddev.databinding.ActivityHomeBinding;
@@ -36,20 +33,7 @@ public class HomeActivity extends AppCompatActivity {
     setSupportActionBar(binding.appbar.toolbar);
     getSupportActionBar().setDisplayShowTitleEnabled(false);
 
-    testCrashlytics();
     homeViewModel.loadPosts();
-  }
-
-  private void testCrashlytics() {
-    Button crashButton = new Button(this);
-    crashButton.setText("Crash!");
-    crashButton.setOnClickListener(new View.OnClickListener() {
-      public void onClick(View view) {
-        Crashlytics.getInstance().crash(); // Force a crash
-      }
-    });
-    addContentView(crashButton, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-        ViewGroup.LayoutParams.WRAP_CONTENT));
   }
 
   private void bindViews() {
