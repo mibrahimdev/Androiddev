@@ -11,6 +11,7 @@ import com.squareup.picasso.Picasso;
 import io.github.mohamedisoliman.androiddev.R;
 import io.github.mohamedisoliman.androiddev.data.model.RedditPost;
 import io.github.mohamedisoliman.androiddev.databinding.ItemRedditPostBinding;
+import io.github.mohamedisoliman.androiddev.ui.Util;
 import io.github.mohamedisoliman.androiddev.ui.base.AppBaseAdapter;
 import io.github.mohamedisoliman.androiddev.ui.post.PostActivity;
 
@@ -47,7 +48,7 @@ public class PostsAdapter extends AppBaseAdapter<PostsAdapter.PostViewHolder, Re
     void bindData(RedditPost post) {
       itemRedditPostBinding.postItem.setOnClickListener(v -> PostActivity.start(context, post));
       itemRedditPostBinding.title.setText(post.getTitle());
-      itemRedditPostBinding.actionShare.setOnClickListener(v -> share(post));
+      itemRedditPostBinding.actionShare.setOnClickListener(v -> Util.sharePost(post, context));
       itemRedditPostBinding.author.setText(post.getAuthor());
       itemRedditPostBinding.created.setText(post.getCreatedDate());
       itemRedditPostBinding.upvotes.setText(String.valueOf(post.getUps()));
@@ -57,7 +58,7 @@ public class PostsAdapter extends AppBaseAdapter<PostsAdapter.PostViewHolder, Re
           .into(itemRedditPostBinding.thumbnail);
     }
 
-    private void share(RedditPost post) {
+    private void share(RedditPost post, Context context) {
       Intent share = new Intent(android.content.Intent.ACTION_SEND);
       share.setType("text/plain");
       share.addFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);

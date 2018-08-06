@@ -6,4 +6,6 @@
   <string name="controversial">Controversial</string>
   <string name="rising">Rising</string>
   <string name="new_posts">New</string>
+  <string name="share">Share</string>
+  <string name="open_links_externally">Open Externally</string>
 </resources>

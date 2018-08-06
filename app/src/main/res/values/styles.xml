@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
   <!-- Base application theme. -->
   <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
@@ -8,4 +8,10 @@
     <item name="colorAccent">@color/colorAccent</item>
   </style>
 
+
+  <style name="LinearProgress" parent="Theme.AppCompat.DayNight">
+    <item name="colorAccent">@color/colorAccent</item>
+    <item name="android:progressBackgroundTint" tools:targetApi="lollipop">@color/blue_grey_500
+    </item>
+  </style>
 </resources>

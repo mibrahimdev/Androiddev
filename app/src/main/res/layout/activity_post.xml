@@ -4,9 +4,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     >
 
-  <android.support.constraint.ConstraintLayout
+  <android.support.design.widget.CoordinatorLayout
       android:layout_width="match_parent"
       android:layout_height="match_parent"
+      android:orientation="vertical"
       >
     <include
         layout="@layout/app_toolbar"
@@ -15,25 +16,14 @@
         app:layout_constraintTop_toTopOf="parent"
         />
 
-    <ProgressBar
-        android:id="@+id/progress"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:layout_marginBottom="-7dp"
-        android:layout_marginTop="-7dp"
-        android:indeterminate="false"
-        android:max="100"
-        android:progress="0"
-        app:layout_constraintBottom_toBottomOf="@id/appbar"
-        style="?android:attr/progressBarStyleHorizontal"
-        />
     <WebView
         android:id="@+id/webview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
         app:layout_constraintTop_toBottomOf="@id/appbar"
         />
 
-  </android.support.constraint.ConstraintLayout>
+  </android.support.design.widget.CoordinatorLayout>
+
 </layout>

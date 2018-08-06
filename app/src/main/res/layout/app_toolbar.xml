@@ -44,5 +44,18 @@
           android:visibility="gone"
           />
     </android.support.v7.widget.Toolbar>
+    <ProgressBar
+        android:id="@+id/progress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="-7dp"
+        android:layout_marginTop="-7dp"
+        android:indeterminate="false"
+        android:max="100"
+        android:progress="0"
+        android:visibility="gone"
+        style="?android:attr/progressBarStyleHorizontal"
+        />
   </android.support.design.widget.AppBarLayout>
 </layout>
