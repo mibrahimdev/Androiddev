@@ -20,6 +20,10 @@
       </intent-filter>
     </activity>
     <activity android:name=".ui.post.PostActivity"/>
+
+    <meta-data
+        android:name="io.fabric.ApiKey"
+        android:value="a2d69591310952755af3ffd9b0abde4a2ee14282"/>
   </application>
 
 </manifest>
