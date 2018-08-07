@@ -1,17 +1,22 @@
 package io.github.mohamedisoliman.androiddev.data.model;
 
+import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.PrimaryKey;
 import android.os.Parcel;
 import android.os.Parcelable;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
+import java.util.Objects;
 
 /**
  * Created by Mohamed Ibrahim on 8/1/18.
  */
+@Entity(tableName = "top_posts")
 public class RedditPost implements Parcelable {
 
+  @PrimaryKey(autoGenerate = true)
   private int id;
   private String stringId;
   private String title;
@@ -110,4 +115,57 @@ public class RedditPost implements Parcelable {
       return new RedditPost[size];
     }
   };
+
+  public void setId(int id) {
+    this.id = id;
+  }
+
+  public void setStringId(String stringId) {
+    this.stringId = stringId;
+  }
+
+  public void setTitle(String title) {
+    this.title = title;
+  }
+
+  public void setAuthor(String author) {
+    this.author = author;
+  }
+
+  public void setUrl(String url) {
+    this.url = url;
+  }
+
+  public void setThumbnail(String thumbnail) {
+    this.thumbnail = thumbnail;
+  }
+
+  public void setUps(long ups) {
+    this.ups = ups;
+  }
+
+  public void setCreated(Double created) {
+    this.created = created;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    RedditPost that = (RedditPost) o;
+    return id == that.id
+        && ups == that.ups
+        && Objects.equals(stringId, that.stringId)
+        && Objects.equals(title, that.title)
+        && Objects.equals(author, that.author)
+        && Objects.equals(url, that.url)
+        && Objects.equals(thumbnail, that.thumbnail)
+        && Objects.equals(created, that.created);
+  }
+
+  @Override
+  public int hashCode() {
+
+    return Objects.hash(id, stringId, title, author, url, thumbnail, ups, created);
+  }
 }

@@ -28,4 +28,10 @@ public class Repository {
   public Completable saveFilter(String filter) {
     return Completable.fromAction(() -> localStore.saveFilter(filter));
   }
+
+  public Completable insertTopFive(RedditPost... posts) {
+    return localStore.insertPosts(posts);
+  }
+
+
 }
