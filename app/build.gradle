@@ -42,6 +42,7 @@ dependencies {
   def crashlytics_version = "2.9.4"
   def okhttp_version = "3.10.0"
   def gson_version = "2.8.2"
+  def work_version = "1.0.0-alpha06"
   def support_library_version = "27.1.1"
 
 
@@ -85,7 +86,10 @@ dependencies {
   annotationProcessor "android.arch.persistence.room:compiler:$room_version"
   implementation "android.arch.persistence.room:rxjava2:$room_version"
   testImplementation "android.arch.persistence.room:testing:$room_version"
-
+  
+  implementation "android.arch.work:work-runtime:$work_version" // use -ktx for Kotlin
+  implementation "android.arch.work:work-firebase:$work_version"
+  androidTestImplementation "android.arch.work:work-testing:$work_version"
 
   implementation "com.squareup.picasso:picasso:$picasso_version"
 
