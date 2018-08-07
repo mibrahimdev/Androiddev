@@ -9,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import com.google.android.gms.ads.AdRequest;
 import io.github.mohamedisoliman.androiddev.R;
 import io.github.mohamedisoliman.androiddev.data.model.RedditFilter;
 import io.github.mohamedisoliman.androiddev.databinding.ActivityHomeBinding;
@@ -33,7 +34,14 @@ public class HomeActivity extends AppCompatActivity {
     setSupportActionBar(binding.appbar.toolbar);
     getSupportActionBar().setDisplayShowTitleEnabled(false);
 
+    loadAd();
     homeViewModel.loadPosts();
+  }
+
+  private void loadAd() {
+    AdRequest adRequest = new AdRequest.Builder().build();
+
+    binding.adView.loadAd(adRequest);
   }
 
   private void bindViews() {
