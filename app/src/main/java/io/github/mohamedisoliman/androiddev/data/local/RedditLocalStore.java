@@ -1,6 +1,5 @@
 package io.github.mohamedisoliman.androiddev.data.local;
 
-import android.app.Application;
 import android.arch.persistence.room.Room;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -20,7 +19,7 @@ public class RedditLocalStore {
   private final SharedPreferences sharedPreferences;
   private final PostsDatabase database;
 
-  public RedditLocalStore(Application app) {
+  public RedditLocalStore(Context app) {
     sharedPreferences = app.getSharedPreferences(FILE_NAME, Context.MODE_PRIVATE);
     database = Room.databaseBuilder(app, PostsDatabase.class, "androiddev.db")
         .fallbackToDestructiveMigration()

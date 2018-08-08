@@ -22,6 +22,10 @@ public class Repository {
 
   public Observable<List<RedditPost>> getAndroidDev() {
     String filter = localStore.getFilter();
+    return getSubreddit(filter);
+  }
+
+  public Observable<List<RedditPost>> getSubreddit(String filter) {
     return remoteStore.getSubreddit(filter);
   }
 
@@ -32,6 +36,4 @@ public class Repository {
   public Completable insertTopFive(RedditPost... posts) {
     return localStore.insertPosts(posts);
   }
-
-
 }
