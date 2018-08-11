@@ -11,6 +11,7 @@ import android.view.MenuItem;
 import android.view.View;
 import com.google.android.gms.ads.AdRequest;
 import io.github.mohamedisoliman.androiddev.R;
+import io.github.mohamedisoliman.androiddev.data.TasksFactory;
 import io.github.mohamedisoliman.androiddev.data.model.RedditFilter;
 import io.github.mohamedisoliman.androiddev.databinding.ActivityHomeBinding;
 import timber.log.Timber;
@@ -46,7 +47,11 @@ public class HomeActivity extends AppCompatActivity {
 
   private void bindViews() {
     setupPostsRecyclerView();
-    homeViewModel.getPosts().subscribe(postsAdapter::setData);
+    homeViewModel.getPosts().subscribe(data -> {
+      TasksFactory.createGetTopPostsTask(false);
+      postsAdapter.setData(data);
+    });
+
     homeViewModel.getErrorIndicator().subscribe(errorMessage -> error(this, errorMessage).show());
     homeViewModel.getLoadingIndicator().subscribe(binding.swipeRefreshLayout::setRefreshing);
   }

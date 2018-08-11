@@ -13,6 +13,7 @@ import io.reactivex.schedulers.Schedulers;
 import io.reactivex.subjects.BehaviorSubject;
 import io.reactivex.subjects.PublishSubject;
 import java.util.List;
+import timber.log.Timber;
 
 import static io.reactivex.subjects.BehaviorSubject.createDefault;
 import static java.util.Collections.emptyList;
@@ -53,7 +54,7 @@ public class HomeViewModel extends AndroidViewModel {
         .doOnNext(redditPosts -> {
           if (redditPosts.isEmpty()) errorIndicator.onNext("No available data");
         })
-        .subscribe(posts::onNext));
+        .subscribe(posts::onNext, Timber::e));
   }
 
   public void loadWithFilter(String filter) {

@@ -20,7 +20,11 @@ public abstract class PostsDatabase extends RoomDatabase {
     return topPostsDao().getRecipes().doOnError(Timber::e).toObservable();
   }
 
-  Completable insertPosts(RedditPost... posts) {
+  Completable insertPosts(List<RedditPost> posts) {
     return Completable.fromAction(() -> topPostsDao().insertPosts(posts));
+  }
+
+  public Completable deletePosts() {
+    return Completable.fromAction(() -> topPostsDao().deletePosts());
   }
 }

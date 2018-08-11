@@ -13,16 +13,14 @@ import java.util.List;
 public class RedditRemoteStore {
 
   private static final String ANDROIDDEV_SUBREDDIT = "androiddev";
-  private static final int LIMIT = 25;
-
   private RedditApi redditApi;
 
   public RedditRemoteStore(RedditApi redditApi) {
     this.redditApi = redditApi;
   }
 
-  public Observable<List<RedditPost>> getSubreddit(String filter) {
-    return redditApi.getSubreddit(ANDROIDDEV_SUBREDDIT, filter, "", LIMIT)
+  public Observable<List<RedditPost>> getSubreddit(String filter, int limit) {
+    return redditApi.getSubreddit(ANDROIDDEV_SUBREDDIT, filter, "", limit)
         .map(RedditResponse::getData)
         .map(Data::getChildren)
         .flatMap(Observable::fromIterable)

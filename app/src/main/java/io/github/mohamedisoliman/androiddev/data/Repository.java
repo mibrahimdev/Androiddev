@@ -14,6 +14,7 @@ public class Repository {
 
   private RedditRemoteStore remoteStore;
   private RedditLocalStore localStore;
+  private static final int LIMIT = 25;
 
   public Repository(RedditRemoteStore remoteStore, RedditLocalStore localStore) {
     this.remoteStore = remoteStore;
@@ -22,18 +23,26 @@ public class Repository {
 
   public Observable<List<RedditPost>> getAndroidDev() {
     String filter = localStore.getFilter();
-    return getSubreddit(filter);
+    return getSubreddit(filter, LIMIT);
   }
 
-  public Observable<List<RedditPost>> getSubreddit(String filter) {
-    return remoteStore.getSubreddit(filter);
+  public Observable<List<RedditPost>> getSubreddit(String filter, int limit) {
+    return remoteStore.getSubreddit(filter, limit);
+  }
+
+  public Observable<List<RedditPost>> getLocalTopPosts() {
+    return localStore.getPosts();
   }
 
   public Completable saveFilter(String filter) {
     return Completable.fromAction(() -> localStore.saveFilter(filter));
   }
 
-  public Completable insertTopFive(RedditPost... posts) {
+  public Completable insertTopFive(List<RedditPost> posts) {
     return localStore.insertPosts(posts);
+  }
+
+  public Completable deleteLocalPosts() {
+    return localStore.deletePosts();
   }
 }

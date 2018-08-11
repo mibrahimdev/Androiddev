@@ -34,11 +34,15 @@ public class RedditLocalStore {
     return sharedPreferences.getString(KEY_FILTER, RedditFilter.NEW);
   }
 
-  public Completable insertPosts(RedditPost... posts) {
+  public Completable insertPosts(List<RedditPost> posts) {
     return database.insertPosts(posts);
   }
 
   public Observable<List<RedditPost>> getPosts() {
     return database.getTopPosts();
+  }
+
+  public Completable deletePosts() {
+    return database.deletePosts();
   }
 }

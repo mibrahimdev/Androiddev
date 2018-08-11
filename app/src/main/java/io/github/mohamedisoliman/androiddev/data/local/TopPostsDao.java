@@ -15,8 +15,11 @@ import java.util.List;
 public interface TopPostsDao {
 
   @Insert(onConflict = OnConflictStrategy.REPLACE)
-  void insertPosts(RedditPost... ingredients);
+  void insertPosts(List<RedditPost> posts);
 
   @Query("SELECT * FROM top_posts")
   Single<List<RedditPost>> getRecipes();
+
+  @Query("DELETE FROM top_posts ")
+  void deletePosts();
 }

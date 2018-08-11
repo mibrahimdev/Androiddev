@@ -5,6 +5,7 @@ import android.support.test.InstrumentationRegistry;
 import android.support.test.runner.AndroidJUnit4;
 import io.github.mohamedisoliman.androiddev.data.model.RedditPost;
 import io.reactivex.observers.TestObserver;
+import java.util.Arrays;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -34,7 +35,7 @@ public class PostsDatabaseTest {
   public void insert_item_should_retrieve_same_item() {
     String title = "new_item";
     RedditPost post = new RedditPost("", title, "", "", "", 0, 0d);
-    TestObserver<Void> test = database.insertPosts(post).test();
+    TestObserver<Void> test = database.insertPosts(Arrays.asList(post)).test();
     test.assertSubscribed();
     test.assertComplete();
 

@@ -1,13 +1,14 @@
 package io.github.mohamedisoliman.androiddev;
 
 import android.app.Application;
-import androidx.work.PeriodicWorkRequest;
+import androidx.work.Constraints;
+import androidx.work.NetworkType;
+import androidx.work.OneTimeWorkRequest;
 import androidx.work.WorkManager;
 import com.crashlytics.android.Crashlytics;
 import com.google.android.gms.ads.MobileAds;
 import io.fabric.sdk.android.Fabric;
 import io.github.mohamedisoliman.androiddev.data.GettingTopPostsWorker;
-import java.util.concurrent.TimeUnit;
 
 /**
  * Created by Mohamed Ibrahim on 8/1/18.
@@ -25,9 +26,21 @@ public class AndroiddevApp extends Application {
   }
 
   private void setupPeriodicTask() {
-    PeriodicWorkRequest.Builder photoCheckBuilder = new PeriodicWorkRequest
-            .Builder(GettingTopPostsWorker.class, 3, TimeUnit.MINUTES);
-    PeriodicWorkRequest workRequest = photoCheckBuilder.build();
-    WorkManager.getInstance().enqueue(workRequest);
+    Constraints constraints =
+        new Constraints.Builder().setRequiredNetworkType(NetworkType.CONNECTED)
+            .setRequiresBatteryNotLow(true)
+            .build();
+
+    //PeriodicWorkRequest.Builder photoCheckBuilder =
+    //    new PeriodicWorkRequest.Builder(GettingTopPostsWorker.class, 16,
+    //        TimeUnit.MINUTES).setConstraints(constraints);
+    //
+    //PeriodicWorkRequest workRequest = photoCheckBuilder.build();
+
+    OneTimeWorkRequest compressionWork =
+        new OneTimeWorkRequest.Builder(GettingTopPostsWorker.class).build();
+    WorkManager.getInstance().enqueue(compressionWork);
+
+    WorkManager.getInstance().enqueue(compressionWork);
   }
 }
