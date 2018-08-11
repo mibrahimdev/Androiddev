@@ -5,6 +5,7 @@ import androidx.work.NetworkType;
 import androidx.work.OneTimeWorkRequest;
 import androidx.work.PeriodicWorkRequest;
 import androidx.work.WorkManager;
+import androidx.work.WorkRequest;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -16,25 +17,17 @@ public class TasksFactory {
   }
 
   public static void createGetTopPostsTask(boolean periodic) {
+    WorkManager.getInstance().cancelAllWork();
+
     Constraints constraints =
         new Constraints.Builder().setRequiredNetworkType(NetworkType.CONNECTED)
             .setRequiresBatteryNotLow(true)
             .build();
 
-    WorkManager.getInstance().cancelAllWork();
-
-    if (periodic) {
-      PeriodicWorkRequest.Builder retrieveTopPost =
-          new PeriodicWorkRequest.Builder(GettingTopPostsWorker.class, 3,
-              TimeUnit.DAYS).setConstraints(constraints);
-
-      PeriodicWorkRequest workRequest = retrieveTopPost.build();
-      WorkManager.getInstance().enqueue(workRequest);
-    } else {
-
-      OneTimeWorkRequest retrieveTopPost =
-          new OneTimeWorkRequest.Builder(GettingTopPostsWorker.class).build();
-      WorkManager.getInstance().enqueue(retrieveTopPost);
-    }
+    WorkRequest request = periodic ? new PeriodicWorkRequest.Builder(GettingTopPostsWorker.class, 3,
+        TimeUnit.DAYS).setConstraints(constraints).build()
+        : new OneTimeWorkRequest.Builder(GettingTopPostsWorker.class).build();
+    
+    WorkManager.getInstance().enqueue(request);
   }
 }
