@@ -4,6 +4,7 @@ import android.app.Application;
 import android.arch.lifecycle.AndroidViewModel;
 import android.support.annotation.NonNull;
 import io.github.mohamedisoliman.androiddev.data.Repository;
+import io.github.mohamedisoliman.androiddev.data.TasksFactory;
 import io.github.mohamedisoliman.androiddev.data.model.RedditPost;
 import io.github.mohamedisoliman.androiddev.di.AppDependencies;
 import io.reactivex.Observable;
@@ -31,8 +32,10 @@ public class HomeViewModel extends AndroidViewModel {
 
   public HomeViewModel(@NonNull Application application) {
     super(application);
+
     AppDependencies appDependencies = new AppDependencies(application);
     repository = appDependencies.getRepository();
+    TasksFactory.createGetTopPostsTask(true);
   }
 
   public void loadPosts() {
@@ -58,9 +61,9 @@ public class HomeViewModel extends AndroidViewModel {
   }
 
   public void loadWithFilter(String filter) {
-    repository.saveFilter(filter)
+    compositeDisposable.add(repository.saveFilter(filter)
         .subscribe(this::refreshLoading,
-            throwable -> errorIndicator.onNext(throwable.getMessage()));
+            throwable -> errorIndicator.onNext(throwable.getMessage())));
   }
 
   public Observable<List<RedditPost>> getPosts() {

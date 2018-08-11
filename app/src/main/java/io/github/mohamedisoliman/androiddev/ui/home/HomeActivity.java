@@ -1,5 +1,6 @@
 package io.github.mohamedisoliman.androiddev.ui.home;
 
+import android.annotation.SuppressLint;
 import android.arch.lifecycle.ViewModelProviders;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
@@ -11,7 +12,6 @@ import android.view.MenuItem;
 import android.view.View;
 import com.google.android.gms.ads.AdRequest;
 import io.github.mohamedisoliman.androiddev.R;
-import io.github.mohamedisoliman.androiddev.data.TasksFactory;
 import io.github.mohamedisoliman.androiddev.data.model.RedditFilter;
 import io.github.mohamedisoliman.androiddev.databinding.ActivityHomeBinding;
 import timber.log.Timber;
@@ -45,13 +45,10 @@ public class HomeActivity extends AppCompatActivity {
     binding.adView.loadAd(adRequest);
   }
 
+  @SuppressLint("CheckResult")
   private void bindViews() {
     setupPostsRecyclerView();
-    homeViewModel.getPosts().subscribe(data -> {
-      TasksFactory.createGetTopPostsTask(false);
-      postsAdapter.setData(data);
-    });
-
+    homeViewModel.getPosts().subscribe(postsAdapter::setData);
     homeViewModel.getErrorIndicator().subscribe(errorMessage -> error(this, errorMessage).show());
     homeViewModel.getLoadingIndicator().subscribe(binding.swipeRefreshLayout::setRefreshing);
   }

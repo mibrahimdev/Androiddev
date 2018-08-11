@@ -10,6 +10,9 @@ import io.github.mohamedisoliman.androiddev.data.model.RedditPost;
  */
 public class Util {
 
+  private Util() {
+  }
+
   public static void sharePost(RedditPost post, Context context) {
     Intent share = new Intent(android.content.Intent.ACTION_SEND);
     share.setType("text/plain");
