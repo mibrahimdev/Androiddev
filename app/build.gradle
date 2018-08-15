@@ -2,8 +2,8 @@ apply plugin: 'com.android.application'
 apply plugin: 'io.fabric'
 
 android {
-  compileSdkVersion 27
 
+  compileSdkVersion 27
   defaultConfig {
     applicationId "io.github.mohamedisoliman.androiddev"
     minSdkVersion 19
@@ -13,10 +13,22 @@ android {
     testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     multiDexEnabled true
   }
+
+  signingConfigs {
+    release {
+      keyAlias 'androiddev'
+      keyPassword 'androiddev'
+      storeFile file("$rootDir/androiddev.jks")
+      storePassword 'androiddev'
+    }
+  }
+
+
   buildTypes {
     release {
       minifyEnabled false
       proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+      signingConfig signingConfigs.release
     }
   }
 
@@ -87,7 +99,7 @@ dependencies {
   implementation "android.arch.persistence.room:rxjava2:$room_version"
   testImplementation "android.arch.persistence.room:testing:$room_version"
 
-  implementation "android.arch.work:work-runtime:$work_version" // use -ktx for Kotlin
+  // use -ktx for Kotlin
   implementation "android.arch.work:work-firebase:$work_version"
   androidTestImplementation "android.arch.work:work-testing:$work_version"
 
