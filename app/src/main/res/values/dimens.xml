@@ -2,4 +2,18 @@
 <resources>
   <dimen name="list_toolbar_side_margin">4dp</dimen>
   <dimen name="widget_margin">8dp</dimen>
+  <dimen name="elevation_appbar">4dp</dimen>
+  <dimen name="progress_bar_margin">-7dp</dimen>
+  <dimen name="corner_radius_post_item_card">8dp</dimen>
+  <dimen name="elevation_card">4dp</dimen>
+  <dimen name="margin_side">8dp</dimen>
+  <dimen name="margin_space">60dp</dimen>
+  <dimen name="margin_top">8dp</dimen>
+  <dimen name="title_text_size">18sp</dimen>
+  <dimen name="margin_inner">4dp</dimen>
+  <dimen name="button_drwable_padding">5dp</dimen>
+  <dimen name="corner_radius_image_post_item">8dp</dimen>
+  <dimen name="elevation_post_item_image">12dp</dimen>
+  <dimen name="post_item_image_size">85dp</dimen>
+  <dimen name="text_size_widget_post_title">14sp</dimen>
 </resources>

@@ -57,7 +57,7 @@ public class ListViewWidgetService extends RemoteViewsService {
     public RemoteViews getViewAt(int position) {
       RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.item_top_post);
       RedditPost item = dataList.get(position);
-      views.setTextViewText(R.id.widget_ingredient_name, item.getTitle());
+      views.setTextViewText(R.id.widget_post_title, item.getTitle());
       return views;
     }
 

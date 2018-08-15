@@ -10,4 +10,9 @@
   <string name="open_links_externally">Open Externally</string>
   <string name="appwidget_text">widget title</string>
   <string name="top_posts">Top posts</string>
+  <string name="test_ad_unit">ca-app-pub-3940256099942544/6300978111</string>
+  <string name="toolbar_title_part_1">Android</string>
+  <string name="toolbar_title_part_2">dev</string>
+  <string name="share_post">Share Post</string>
+  <string name="refresh_top_posts">Refresh Top posts</string>
 </resources>

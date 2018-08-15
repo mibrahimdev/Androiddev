@@ -6,12 +6,12 @@
     >
 
   <TextView
-      android:id="@+id/widget_ingredient_name"
+      android:id="@+id/widget_post_title"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:textAppearance="@style/TextAppearance.AppCompat.Title"
-      android:textSize="14sp"
-      tools:text="Ingredient name"
+      android:textSize="@dimen/text_size_widget_post_title"
+      tools:text="@tools:sample/lorem"
       />
 
 </FrameLayout>
