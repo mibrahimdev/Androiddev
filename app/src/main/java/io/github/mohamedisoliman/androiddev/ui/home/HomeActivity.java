@@ -20,6 +20,7 @@ import static es.dmoral.toasty.Toasty.error;
 
 public class HomeActivity extends AppCompatActivity {
 
+  public static final String SHOW_TOP_POSTS = "show_top_posts";
   private PostsAdapter postsAdapter = new PostsAdapter();
   private ActivityHomeBinding binding;
   private HomeViewModel homeViewModel;
@@ -36,7 +37,12 @@ public class HomeActivity extends AppCompatActivity {
     getSupportActionBar().setDisplayShowTitleEnabled(false);
 
     loadAd();
-    homeViewModel.loadPosts();
+
+    if (getIntent() != null && SHOW_TOP_POSTS.equalsIgnoreCase(getIntent().getAction())) {
+      homeViewModel.loadWithFilter(RedditFilter.TOP);
+    } else {
+      homeViewModel.loadPosts();
+    }
   }
 
   private void loadAd() {

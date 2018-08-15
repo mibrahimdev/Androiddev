@@ -5,6 +5,7 @@ import io.github.mohamedisoliman.androiddev.data.model.RedditPost;
 import io.github.mohamedisoliman.androiddev.data.remote.RedditRemoteStore;
 import io.reactivex.Completable;
 import io.reactivex.Observable;
+import io.reactivex.schedulers.Schedulers;
 import java.util.List;
 
 /**
@@ -31,7 +32,7 @@ public class Repository {
   }
 
   public Observable<List<RedditPost>> getLocalTopPosts() {
-    return localStore.getPosts();
+    return localStore.getPosts().subscribeOn(Schedulers.io());
   }
 
   public Completable saveFilter(String filter) {

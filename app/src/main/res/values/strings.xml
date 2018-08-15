@@ -8,4 +8,6 @@
   <string name="new_posts">New</string>
   <string name="share">Share</string>
   <string name="open_links_externally">Open Externally</string>
+  <string name="appwidget_text">widget title</string>
+  <string name="top_posts">Top posts</string>
 </resources>

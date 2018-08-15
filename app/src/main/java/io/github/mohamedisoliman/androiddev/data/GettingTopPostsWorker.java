@@ -1,13 +1,20 @@
 package io.github.mohamedisoliman.androiddev.data;
 
 import android.app.Application;
+import android.app.PendingIntent;
+import android.appwidget.AppWidgetManager;
+import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.NotificationManagerCompat;
+import android.support.v4.app.TaskStackBuilder;
 import androidx.work.Worker;
 import io.github.mohamedisoliman.androiddev.R;
 import io.github.mohamedisoliman.androiddev.data.model.RedditFilter;
 import io.github.mohamedisoliman.androiddev.di.AppDependencies;
+import io.github.mohamedisoliman.androiddev.ui.home.HomeActivity;
+import io.github.mohamedisoliman.androiddev.ui.widget.TopPostsWidget;
 import timber.log.Timber;
 
 /**
@@ -36,7 +43,7 @@ public class GettingTopPostsWorker extends Worker {
 
       if (result) {
         showNotification();
-        //TODO: update widget
+        updateWidget(getApplicationContext());
       }
 
       return result ? Result.SUCCESS : Result.FAILURE;
@@ -54,9 +61,25 @@ public class GettingTopPostsWorker extends Worker {
             .setAutoCancel(true)
             .setPriority(NotificationCompat.PRIORITY_DEFAULT);
 
+    Intent resultIntent = new Intent(getApplicationContext(), HomeActivity.class);
+    resultIntent.setAction(HomeActivity.SHOW_TOP_POSTS);
+
+    TaskStackBuilder stackBuilder = TaskStackBuilder.create(getApplicationContext());
+    stackBuilder.addNextIntentWithParentStack(resultIntent);
+
+    PendingIntent resultPendingIntent =
+        stackBuilder.getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);
+
+    mBuilder.setContentIntent(resultPendingIntent);
+
     NotificationManagerCompat notificationManager =
         NotificationManagerCompat.from(getApplicationContext());
 
     notificationManager.notify(TOP_POSTS_NOTIFICATION_ID, mBuilder.build());
+  }
+
+  private void updateWidget(Context context) {
+    AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(context);
+    TopPostsWidget.updateAppWidget(context, appWidgetManager, TopPostsWidget.TOP_POSTS_WIDGET_ID);
   }
 }

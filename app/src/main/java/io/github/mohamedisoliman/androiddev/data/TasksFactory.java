@@ -16,18 +16,29 @@ public class TasksFactory {
   private TasksFactory() {
   }
 
-  public static void createGetTopPostsTask(boolean periodic) {
-    WorkManager.getInstance().cancelAllWork();
-
+  public static void periodicTopPostsUpdate() {
     Constraints constraints =
         new Constraints.Builder().setRequiredNetworkType(NetworkType.CONNECTED)
             .setRequiresBatteryNotLow(true)
             .build();
 
-    WorkRequest request = periodic ? new PeriodicWorkRequest.Builder(GettingTopPostsWorker.class, 3,
-        TimeUnit.DAYS).setConstraints(constraints).build()
-        : new OneTimeWorkRequest.Builder(GettingTopPostsWorker.class).build();
-    
+    WorkRequest request = new PeriodicWorkRequest.Builder(GettingTopPostsWorker.class, 3,
+        TimeUnit.DAYS)
+        .setConstraints(constraints)
+        .build();
+
+    WorkManager.getInstance().enqueue(request);
+  }
+
+  public static void instantTopPostsUpdateTask() {
+    Constraints constraints =
+        new Constraints.Builder().setRequiredNetworkType(NetworkType.CONNECTED)
+            .setRequiresBatteryNotLow(true)
+            .build();
+
+    WorkRequest request =
+        new OneTimeWorkRequest.Builder(GettingTopPostsWorker.class).setConstraints(constraints)
+            .build();
     WorkManager.getInstance().enqueue(request);
   }
 }

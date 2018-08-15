@@ -35,7 +35,7 @@ public class HomeViewModel extends AndroidViewModel {
 
     AppDependencies appDependencies = new AppDependencies(application);
     repository = appDependencies.getRepository();
-    TasksFactory.createGetTopPostsTask(true);
+    TasksFactory.periodicTopPostsUpdate();
   }
 
   public void loadPosts() {
@@ -53,6 +53,7 @@ public class HomeViewModel extends AndroidViewModel {
         .subscribeOn(Schedulers.io())
         .observeOn(AndroidSchedulers.mainThread())
         .doOnNext(redditPosts -> loadingIndicator.onNext(false))
+        .doOnError(throwable -> loadingIndicator.onNext(false))
         .doOnError(throwable -> errorIndicator.onNext(throwable.getMessage()))
         .doOnNext(redditPosts -> {
           if (redditPosts.isEmpty()) errorIndicator.onNext("No available data");

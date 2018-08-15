@@ -12,7 +12,9 @@
       android:roundIcon="@mipmap/ic_launcher_round"
       android:supportsRtl="true"
       android:theme="@style/AppTheme">
-    <activity android:name=".ui.home.HomeActivity">
+    <activity android:name=".ui.home.HomeActivity"
+        android:launchMode="singleInstance"
+        >
       <intent-filter>
         <action android:name="android.intent.action.MAIN"/>
 
@@ -24,6 +26,19 @@
     <meta-data
         android:name="io.fabric.ApiKey"
         android:value="a2d69591310952755af3ffd9b0abde4a2ee14282"/>
+
+    <receiver android:name=".ui.widget.TopPostsWidget">
+      <intent-filter>
+        <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
+      </intent-filter>
+      <meta-data
+          android:name="android.appwidget.provider"
+          android:resource="@xml/top_posts_widget_info"/>
+    </receiver>
+
+    <service
+        android:name=".ui.widget.ListViewWidgetService"
+        android:permission="android.permission.BIND_REMOTEVIEWS"/>
   </application>
 
 </manifest>
