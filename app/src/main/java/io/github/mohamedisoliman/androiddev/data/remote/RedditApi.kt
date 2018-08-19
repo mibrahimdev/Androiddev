@@ -13,6 +13,6 @@ interface RedditApi {
 
   @GET("/r/{subreddit}/{filter}.json")
   fun getSubreddit(@Path("subreddit") subreddit: String,
-      @Path("filter") filter: String, @Query("after") after: String,
+      @Path("filter") filter: String, @Query("after") after: String = "",
       @Query("limit") limit: Int): Observable<RedditResponse>
 }

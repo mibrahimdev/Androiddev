@@ -13,7 +13,7 @@ class RedditRemoteStore(private val redditApi: RedditApi) {
   }
 
   fun getSubreddit(filter: String, limit: Int): Observable<List<RedditPost>> {
-    return redditApi.getSubreddit(ANDROIDDEV_SUBREDDIT, filter, "", limit)
+    return redditApi.getSubreddit(ANDROIDDEV_SUBREDDIT, filter, limit = limit)
         .map { redditResponse -> redditResponse.data }
         .map { data1 -> data1.children }
         .flatMap { source -> Observable.fromIterable(source) }

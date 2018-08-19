@@ -15,4 +15,5 @@
   <string name="toolbar_title_part_2">dev</string>
   <string name="share_post">Share Post</string>
   <string name="refresh_top_posts">Refresh Top posts</string>
+  <string name="top_posts_notification_message">Top Posts from Androiddev are here :D</string>
 </resources>

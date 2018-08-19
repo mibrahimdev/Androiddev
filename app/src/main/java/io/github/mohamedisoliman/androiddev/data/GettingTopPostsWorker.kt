@@ -10,8 +10,8 @@ import android.support.v4.app.NotificationManagerCompat
 import android.support.v4.app.TaskStackBuilder
 import androidx.work.Worker
 import io.github.mohamedisoliman.androiddev.R
+import io.github.mohamedisoliman.androiddev.R.string
 import io.github.mohamedisoliman.androiddev.data.model.RedditFilter
-import io.github.mohamedisoliman.androiddev.data.model.RedditPost
 import io.github.mohamedisoliman.androiddev.di.AppDependencies
 import io.github.mohamedisoliman.androiddev.ui.home.HomeActivity
 import io.github.mohamedisoliman.androiddev.ui.widget.TopPostsWidget
@@ -54,7 +54,7 @@ class GettingTopPostsWorker : Worker() {
     val mBuilder = NotificationCompat.Builder(applicationContext, CHANNEL_ID).setSmallIcon(
         R.drawable.ic_reddit_logo)
         .setContentTitle(applicationContext.getString(R.string.app_name))
-        .setContentText("Top Posts from Androiddev are here :D")
+        .setContentText(applicationContext.getString(R.string.top_posts_notification_message))
         .setAutoCancel(true)
         .setPriority(NotificationCompat.PRIORITY_DEFAULT)
 
