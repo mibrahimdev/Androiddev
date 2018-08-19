@@ -9,9 +9,9 @@ import com.squareup.picasso.Picasso
 import io.github.mohamedisoliman.androiddev.R
 import io.github.mohamedisoliman.androiddev.data.model.RedditPost
 import io.github.mohamedisoliman.androiddev.databinding.ItemRedditPostBinding
-import io.github.mohamedisoliman.androiddev.ui.Util
 import io.github.mohamedisoliman.androiddev.ui.base.AppBaseAdapter
 import io.github.mohamedisoliman.androiddev.ui.post.PostActivity
+import io.github.mohamedisoliman.androiddev.ui.sharePost
 
 /**
  * Created by Mohamed Ibrahim on 8/4/18.
@@ -36,7 +36,7 @@ internal class PostsAdapter : AppBaseAdapter<PostsAdapter.PostViewHolder, Reddit
     fun bindData(post: RedditPost) {
       itemRedditPostBinding.postItem.setOnClickListener { PostActivity.start(context, post) }
       itemRedditPostBinding.title.text = post.title
-      itemRedditPostBinding.actionShare.setOnClickListener { Util.sharePost(post, context) }
+      itemRedditPostBinding.actionShare.setOnClickListener { context.sharePost(post) }
       itemRedditPostBinding.author.text = post.author
       itemRedditPostBinding.created.text = post.createdDate
       itemRedditPostBinding.upvotes.text = post.ups.toString()
