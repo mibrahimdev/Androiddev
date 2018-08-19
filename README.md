@@ -1,9 +1,9 @@
 # Androiddev
 Keep up with Android development latest trends
-- Udacity Capstone Project written in Java according to the Nano degree rubric rules.
+- Udacity Capstone Project written ~~in Java according to the Nano degree rubric rulesv.
 
 ## Technologies
-- Kotlin (Coming soon)
+- Kotlin
 - RxJava 2
 - Arch components (Room - ViewModel - LifeCycleAware - WorkManager)
 - Picasso
