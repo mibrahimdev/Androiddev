@@ -1,11 +1,10 @@
 package io.github.mohamedisoliman.androiddev.data.remote
 
-import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
-import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.converter.moshi.MoshiConverterFactory
 
 /**
  * Created by Mohamed Ibrahim on 7/31/18.
@@ -14,11 +13,15 @@ object RemotesDataFactory {
 
   private const val BASE_URL = "https://www.reddit.com"
 
-  private val gsonFactory: GsonConverterFactory
-    get() {
-      val gson = GsonBuilder().create()
-      return GsonConverterFactory.create(gson)
-    }
+  fun newRedditApi(): RedditApi {
+
+    val retrofit = Retrofit.Builder().baseUrl(BASE_URL)
+        .client(okHttpClient)
+        .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+        .addConverterFactory(MoshiConverterFactory.create())
+        .build()
+    return retrofit.create(RedditApi::class.java)
+  }
 
   private val okHttpClient: OkHttpClient
     get() {
@@ -28,12 +31,4 @@ object RemotesDataFactory {
       return clientBuilder.build()
     }
 
-  fun newRedditApi(): RedditApi {
-    val retrofit = Retrofit.Builder().baseUrl(BASE_URL)
-        .client(okHttpClient)
-        .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-        .addConverterFactory(gsonFactory)
-        .build()
-    return retrofit.create(RedditApi::class.java)
-  }
 }

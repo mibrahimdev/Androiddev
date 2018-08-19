@@ -2,7 +2,7 @@ package io.github.mohamedisoliman.androiddev.data.model
 
 import com.squareup.moshi.Json
 
-data class RedditResponse(
+data class Children(
     @Json(name = "kind") val kind: String,
-    @Json(name = "data") val data: Data
+    @Json(name = "data") val data: DataX
 )

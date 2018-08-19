@@ -10,7 +10,6 @@ import android.support.v4.app.NotificationManagerCompat
 import android.support.v4.app.TaskStackBuilder
 import androidx.work.Worker
 import io.github.mohamedisoliman.androiddev.R
-import io.github.mohamedisoliman.androiddev.R.string
 import io.github.mohamedisoliman.androiddev.data.model.RedditFilter
 import io.github.mohamedisoliman.androiddev.di.AppDependencies
 import io.github.mohamedisoliman.androiddev.ui.home.HomeActivity
