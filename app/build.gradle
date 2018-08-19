@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
 apply plugin: 'io.fabric'
 
 android {
@@ -39,6 +40,10 @@ android {
   }
 
   dataBinding.enabled true
+}
+
+androidExtensions {
+  experimental = true
 }
 
 dependencies {
