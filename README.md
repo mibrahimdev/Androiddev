@@ -1,6 +1,6 @@
 # Androiddev
 Keep up with Android development latest trends
-- Udacity Capstone Project written ~~in Java according to the Nano degree rubric rulesv.
+- Udacity Capstone Project written in Kotlin ~~Java according to the Nano degree rubric rulesv~~.
 
 ## Technologies
 - Kotlin
