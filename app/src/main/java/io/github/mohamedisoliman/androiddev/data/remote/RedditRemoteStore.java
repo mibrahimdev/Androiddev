@@ -25,8 +25,8 @@ public class RedditRemoteStore {
         .map(Data::getChildren)
         .flatMap(Observable::fromIterable)
         .map(Child::getData)
-        .map(data -> new RedditPost(data.getId(), data.getTitle(), data.getAuthor(), data.getUrl(),
-            data.getThumbnail(), data.getUps(), data.getCreated()))
+        .map(data -> new RedditPost(0, data.getId(), data.getTitle(), data.getAuthor(),
+            data.getUrl(), data.getThumbnail(), data.getUps(), data.getCreated()))
         .toList()
         .toObservable();
   }

@@ -20,7 +20,7 @@ public class PostsDatabaseTest {
   PostsDatabase database;
 
   @Before
-  public void setUp() throws Exception {
+  public void setUp() {
     database =
         Room.inMemoryDatabaseBuilder(InstrumentationRegistry.getContext(), PostsDatabase.class)
             .build();
@@ -34,7 +34,7 @@ public class PostsDatabaseTest {
   @Test
   public void insert_item_should_retrieve_same_item() {
     String title = "new_item";
-    RedditPost post = new RedditPost("", title, "", "", "", 0, 0d);
+    RedditPost post = new RedditPost(0, "", title);
     TestObserver<Void> test = database.insertPosts(Arrays.asList(post)).test();
     test.assertSubscribed();
     test.assertComplete();
