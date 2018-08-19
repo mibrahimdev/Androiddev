@@ -31,7 +31,7 @@ public class RedditLocalStore {
   }
 
   public String getFilter() {
-    return sharedPreferences.getString(KEY_FILTER, RedditFilter.NEW);
+    return sharedPreferences.getString(KEY_FILTER, RedditFilter.NEW.getFilterValue());
   }
 
   public Completable insertPosts(List<RedditPost> posts) {

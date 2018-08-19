@@ -39,7 +39,7 @@ public class HomeActivity extends AppCompatActivity {
     loadAd();
 
     if (getIntent() != null && SHOW_TOP_POSTS.equalsIgnoreCase(getIntent().getAction())) {
-      homeViewModel.loadWithFilter(RedditFilter.TOP);
+      homeViewModel.loadWithFilter(RedditFilter.TOP.getFilterValue());
     } else {
       homeViewModel.loadPosts();
     }
@@ -79,19 +79,19 @@ public class HomeActivity extends AppCompatActivity {
     int id = item.getItemId();
     switch (id) {
       case R.id.hot:
-        homeViewModel.loadWithFilter(RedditFilter.HOT);
+        homeViewModel.loadWithFilter(RedditFilter.HOT.getFilterValue());
         break;
       case R.id.new_posts:
-        homeViewModel.loadWithFilter(RedditFilter.NEW);
+        homeViewModel.loadWithFilter(RedditFilter.NEW.getFilterValue());
         break;
       case R.id.controversial:
-        homeViewModel.loadWithFilter(RedditFilter.CONTROVERSIAL);
+        homeViewModel.loadWithFilter(RedditFilter.CONTROVERSIAL.getFilterValue());
         break;
       case R.id.top:
-        homeViewModel.loadWithFilter(RedditFilter.TOP);
+        homeViewModel.loadWithFilter(RedditFilter.TOP.getFilterValue());
         break;
       case R.id.rising:
-        homeViewModel.loadWithFilter(RedditFilter.RISING);
+        homeViewModel.loadWithFilter(RedditFilter.RISING.getFilterValue());
         break;
       default:
         Timber.i("Menu Item id with no click handling: %s", String.valueOf(id));

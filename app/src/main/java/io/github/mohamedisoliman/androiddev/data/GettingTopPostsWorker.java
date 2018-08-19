@@ -34,7 +34,7 @@ public class GettingTopPostsWorker extends Worker {
     try {
 
       Boolean result = repository.deleteLocalPosts()
-          .andThen(repository.getSubreddit(RedditFilter.TOP, 5))
+          .andThen(repository.getSubreddit(RedditFilter.TOP.getFilterValue(), 5))
           .flatMapSingle(redditPosts -> repository.insertTopFive(redditPosts)
               .toSingleDefault(true)
               .onErrorReturnItem(false))
