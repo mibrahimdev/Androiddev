@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 apply plugin: 'io.fabric'
 
 android {
@@ -103,7 +104,7 @@ dependencies {
   testImplementation "android.arch.core:core-testing:$lifecycle_version"
 
   implementation "android.arch.persistence.room:runtime:$room_version"
-  annotationProcessor "android.arch.persistence.room:compiler:$room_version"
+  kapt "android.arch.persistence.room:compiler:$room_version"
   implementation "android.arch.persistence.room:rxjava2:$room_version"
   testImplementation "android.arch.persistence.room:testing:$room_version"
 

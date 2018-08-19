@@ -38,7 +38,7 @@ class PostsDatabaseTest {
     test.assertSubscribed()
     test.assertComplete()
 
-    val testTitle = database.topPosts.blockingSingle()[0].title
+    val testTitle = database.getTopPosts().blockingSingle()[0].title
     Assert.assertEquals(title, testTitle)
   }
 }
