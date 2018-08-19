@@ -35,7 +35,7 @@ public class HomeViewModel extends AndroidViewModel {
 
     AppDependencies appDependencies = new AppDependencies(application);
     repository = appDependencies.getRepository();
-    TasksFactory.periodicTopPostsUpdate();
+    TasksFactory.INSTANCE.periodicTopPostsUpdate();
   }
 
   public void loadPosts() {

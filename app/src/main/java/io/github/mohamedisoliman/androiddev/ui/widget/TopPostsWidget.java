@@ -75,7 +75,7 @@ public class TopPostsWidget extends AppWidgetProvider {
   public void onReceive(Context context, Intent intent) {
     super.onReceive(context, intent);
     if (UPDATE_WIDGET.equals(intent.getAction())) {
-      TasksFactory.instantTopPostsUpdateTask();
+      TasksFactory.INSTANCE.instantTopPostsUpdateTask();
     }
   }
 
