@@ -28,12 +28,11 @@ class RedditLocalStore(app: Context) {
         .build()
   }
 
-  val filter: String
-    get() = sharedPreferences.getString(KEY_FILTER, RedditFilter.NEW.filterValue)
-
-  fun saveFilter(filter: String) {
-    sharedPreferences.edit().putString(KEY_FILTER, filter).apply()
-  }
+  var filter: String
+    get() = sharedPreferences.getString(KEY_FILTER, RedditFilter.NEW.filterValue)!!
+    set(value) {
+      sharedPreferences.edit().putString(KEY_FILTER, value).apply()
+    }
 
   val posts: Observable<List<RedditPost>>
     get() = database.getTopPosts()

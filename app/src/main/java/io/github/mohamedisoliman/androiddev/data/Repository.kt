@@ -15,8 +15,7 @@ class Repository(private val remoteStore: RedditRemoteStore,
 
   val androidDev: Observable<List<RedditPost>>
     get() {
-      val filter = localStore.filter
-      return getSubreddit(filter, LIMIT)
+      return getSubreddit(localStore.filter, LIMIT)
     }
 
   val localTopPosts: Observable<List<RedditPost>>
@@ -27,7 +26,7 @@ class Repository(private val remoteStore: RedditRemoteStore,
   }
 
   fun saveFilter(filter: String): Completable {
-    return Completable.fromAction { localStore.saveFilter(filter) }
+    return Completable.fromAction { localStore.filter = filter }
   }
 
   fun insertTopFive(posts: List<RedditPost>): Completable {
