@@ -19,7 +19,7 @@ public class AppDependencies extends AndroidViewModel {
   public AppDependencies(@NonNull Application application) {
     super(application);
     RedditLocalStore localStore = new RedditLocalStore(application);
-    RedditApi redditApi = RemotesDataFactory.newRedditApi();
+    RedditApi redditApi = RemotesDataFactory.INSTANCE.newRedditApi();
     RedditRemoteStore redditRemoteStore = new RedditRemoteStore(redditApi);
 
     repository = new Repository(redditRemoteStore, localStore);
