@@ -17,14 +17,10 @@ class RedditRemoteStore(private val redditApi: RedditApi) {
     return redditApi.getSubreddit(ANDROIDDEV_SUBREDDIT, filter, limit = limit)
         .doOnError { Timber.e(it) }
         .map { redditResponse -> redditResponse.data }
-        .map { data1 -> data1.children }
+        .map { it.children }
         .flatMap { source -> Observable.fromIterable(source) }
         .map { child -> child.data }
-        .map { data ->
-          RedditPost(0, data.id, data.title,
-              data.author,
-              data.url, data.thumbnail, data.ups, data.created)
-        }
+        .map { RedditPost(0, it.id, it.title, it.author, it.url, it.thumbnail, it.ups, it.created) }
         .toList()
         .toObservable()
   }
