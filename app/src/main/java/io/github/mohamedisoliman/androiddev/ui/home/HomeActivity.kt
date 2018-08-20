@@ -9,7 +9,6 @@ import android.support.v7.widget.LinearLayoutManager
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import com.google.android.gms.ads.AdRequest
 import es.dmoral.toasty.Toasty.error
 import io.github.mohamedisoliman.androiddev.R
 import io.github.mohamedisoliman.androiddev.data.model.RedditFilter
@@ -33,19 +32,11 @@ class HomeActivity : AppCompatActivity() {
     setSupportActionBar(binding.appbar?.toolbar)
     supportActionBar!!.setDisplayShowTitleEnabled(false)
 
-    loadAd()
-
     if (intent != null && SHOW_TOP_POSTS.equals(intent.action!!, ignoreCase = true)) {
       homeViewModel.loadWithFilter(RedditFilter.TOP.filterValue)
     } else {
       homeViewModel.loadPosts()
     }
-  }
-
-  private fun loadAd() {
-    val adRequest = AdRequest.Builder().build()
-
-    binding.adView.loadAd(adRequest)
   }
 
   @SuppressLint("CheckResult")
