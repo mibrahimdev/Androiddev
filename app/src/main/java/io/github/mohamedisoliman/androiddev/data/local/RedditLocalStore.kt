@@ -1,6 +1,6 @@
 package io.github.mohamedisoliman.androiddev.data.local
 
-import android.arch.persistence.room.Room
+import androidx.room.Room
 import android.content.Context
 import android.content.SharedPreferences
 import io.github.mohamedisoliman.androiddev.data.model.RedditFilter

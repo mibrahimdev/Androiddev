@@ -1,7 +1,7 @@
 package io.github.mohamedisoliman.androiddev.di
 
 import android.app.Application
-import android.arch.lifecycle.AndroidViewModel
+import androidx.lifecycle.AndroidViewModel
 import io.github.mohamedisoliman.androiddev.data.Repository
 import io.github.mohamedisoliman.androiddev.data.local.RedditLocalStore
 import io.github.mohamedisoliman.androiddev.data.remote.RedditApi

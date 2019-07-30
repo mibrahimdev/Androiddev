@@ -1,12 +1,12 @@
 package io.github.mohamedisoliman.androiddev.ui.base
 
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView
 import java.util.ArrayList
 
 /**
  * Created by Mohamed Ibrahim on 4/27/18.
  */
-abstract class AppBaseAdapter<VH : RecyclerView.ViewHolder, T> : RecyclerView.Adapter<VH>() {
+abstract class AppBaseAdapter<VH : androidx.recyclerview.widget.RecyclerView.ViewHolder, T> : androidx.recyclerview.widget.RecyclerView.Adapter<VH>() {
 
   val data = ArrayList<T>()
 

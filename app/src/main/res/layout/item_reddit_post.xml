@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     >
 
-  <android.support.constraint.ConstraintLayout
+  <androidx.constraintlayout.widget.ConstraintLayout
       android:id="@+id/post_item"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
@@ -94,7 +94,7 @@
         app:layout_constraintTop_toBottomOf="@+id/thumbnail"
         tools:text="@tools:sample/lorem/random"
         />
-    <android.support.constraint.Barrier
+    <androidx.constraintlayout.widget.Barrier
         android:id="@+id/barrier"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -103,34 +103,34 @@
         app:constraint_referenced_ids="title,created"
         app:layout_constraintStart_toStartOf="parent"
         />
-    <android.support.constraint.Group
+    <androidx.constraintlayout.widget.Group
         android:id="@+id/group"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:constraint_referenced_ids="imageView,upvotes"
         />
-    <android.support.constraint.Guideline
+    <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_begin="20dp"
         />
-    <android.support.constraint.Guideline
+    <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_end="16dp"
         />
-    <android.support.constraint.Guideline
+    <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_begin="16dp"
         />
-    <android.support.v7.widget.AppCompatImageView
+    <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/thumbnail"
         android:layout_width="@dimen/post_item_image_size"
         android:layout_height="@dimen/post_item_image_size"
@@ -146,5 +146,5 @@
         tools:src="@tools:sample/avatars"
         />
 
-  </android.support.constraint.ConstraintLayout>
+  </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

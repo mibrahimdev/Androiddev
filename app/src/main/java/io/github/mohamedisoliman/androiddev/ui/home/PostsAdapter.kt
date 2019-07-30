@@ -1,8 +1,8 @@
 package io.github.mohamedisoliman.androiddev.ui.home
 
 import android.content.Context
-import android.databinding.DataBindingUtil
-import android.support.v7.widget.RecyclerView
+import androidx.databinding.DataBindingUtil
+import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.squareup.picasso.Picasso
@@ -30,7 +30,7 @@ internal class PostsAdapter : AppBaseAdapter<PostsAdapter.PostViewHolder, Reddit
   }
 
   internal inner class PostViewHolder(private val itemRedditPostBinding: ItemRedditPostBinding) :
-      RecyclerView.ViewHolder(itemRedditPostBinding.root) {
+      androidx.recyclerview.widget.RecyclerView.ViewHolder(itemRedditPostBinding.root) {
     private val context: Context = itemRedditPostBinding.root.context
 
     fun bindData(post: RedditPost) {

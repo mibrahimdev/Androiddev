@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     >
 
-  <android.support.design.widget.CoordinatorLayout
+  <androidx.coordinatorlayout.widget.CoordinatorLayout
       android:layout_width="match_parent"
       android:layout_height="match_parent"
       android:orientation="vertical"
@@ -15,23 +15,23 @@
         android:id="@+id/appbar"
         />
 
-    <android.support.v4.widget.SwipeRefreshLayout
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/swipe_refresh_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         >
 
-      <android.support.v7.widget.RecyclerView
+      <androidx.recyclerview.widget.RecyclerView
           android:id="@+id/posts_recyclerView"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
           app:layout_constraintTop_toTopOf="parent"
           tools:listitem="@layout/item_reddit_post"
           >
-      </android.support.v7.widget.RecyclerView>
-    </android.support.v4.widget.SwipeRefreshLayout>
+      </androidx.recyclerview.widget.RecyclerView>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
-  </android.support.design.widget.CoordinatorLayout>
+  </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
 </layout>

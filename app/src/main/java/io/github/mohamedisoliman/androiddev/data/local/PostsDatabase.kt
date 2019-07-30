@@ -1,7 +1,7 @@
 package io.github.mohamedisoliman.androiddev.data.local
 
-import android.arch.persistence.room.Database
-import android.arch.persistence.room.RoomDatabase
+import androidx.room.Database
+import androidx.room.RoomDatabase
 import io.github.mohamedisoliman.androiddev.data.model.RedditPost
 import io.reactivex.Completable
 import io.reactivex.Observable

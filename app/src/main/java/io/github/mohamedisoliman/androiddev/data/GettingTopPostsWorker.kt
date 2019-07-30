@@ -5,9 +5,9 @@ import android.app.PendingIntent
 import android.appwidget.AppWidgetManager
 import android.content.Context
 import android.content.Intent
-import android.support.v4.app.NotificationCompat
-import android.support.v4.app.NotificationManagerCompat
-import android.support.v4.app.TaskStackBuilder
+import androidx.core.app.NotificationCompat
+import androidx.core.app.NotificationManagerCompat
+import androidx.core.app.TaskStackBuilder
 import androidx.work.Worker
 import io.github.mohamedisoliman.androiddev.R
 import io.github.mohamedisoliman.androiddev.data.model.RedditFilter

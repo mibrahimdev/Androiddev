@@ -1,8 +1,8 @@
 package io.github.mohamedisoliman.androiddev.data.local
 
-import android.arch.persistence.room.Room
-import android.support.test.InstrumentationRegistry
-import android.support.test.runner.AndroidJUnit4
+import androidx.room.Room
+import androidx.test.platform.app.InstrumentationRegistry
+import androidx.test.ext.junit.runners.AndroidJUnit4
 import io.github.mohamedisoliman.androiddev.data.model.RedditPost
 import org.junit.Assert
 import org.junit.Before
@@ -20,7 +20,8 @@ class PostsDatabaseTest {
 
   @Before
   fun setUp() {
-    database = Room.inMemoryDatabaseBuilder(InstrumentationRegistry.getContext(),
+    database = Room.inMemoryDatabaseBuilder(
+        InstrumentationRegistry.getContext(),
         PostsDatabase::class.java)
         .build()
   }
